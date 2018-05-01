@@ -6,6 +6,11 @@
 
 #include <netinet/in.h>
 
+#include "grovepi.h"
+#include <string.h>
+
+#define INPUT 0
+#define OUTPUT 1
 int main(){
     chat server_message[256] = "Du hast den Server erreicht";
     strcat(server_message, "\n");
