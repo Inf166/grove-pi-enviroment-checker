@@ -96,10 +96,10 @@ int main(){
     serv_ad.sin_port = htons(5678);         //Portnummer
     serv_ad.sin_addr.s_addr = INADDR_ANY;   //Vlt noch ändern in IP Adresse
 
-    //bind den socket zu unser IP und port
+    //binde den socket zu unser IP und port
     bind(network_socket, (struct sockaddr *) &serv_ad, sizeof(serv_ad));
 
-    //listen to conections
+    //listen to connections
     listen(server_socket, 5);
 
     int client_socket;
