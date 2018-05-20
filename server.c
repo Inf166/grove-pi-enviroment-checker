@@ -27,17 +27,15 @@ int main(){
         // do indefinitely
         getTemperature(&temp, port);
 
-    char nurso[sizeof(temp)];
-    nurso = (char) temp;
-    char test[25] = "[temp = ";
-    strcat(test, nurso);
-    strcat(test, "]\n");
+    char temperaturinchar[sizeof(temp)];
+    temperaturinchar = (char) temp;
+    char tempuebergang[25] = "[temp = ";
+    strcat(tempuebergang, temperaturinchar);
+    strcat(tempuebergang, "]\n");
 
-    strcat(server_message, test);
+    strcat(server_message, tempuebergang);
 
         printf("Humidity erkannt\n");
-        int port = 8; //Sensor an digital Port D8 anschließen
-        float temp = 0, humidity = 0;
 
 
         init(); //Initialisierung des GrovePi's
@@ -48,11 +46,17 @@ int main(){
         // do indefinitely
         //get only Humidity
         getHumidity(&humidity, port);
-    char test[25] = ("[humidity = %.02f%%]\n", humidity);
-    strcat(server_message, test);
+
+    char humidityalschar[sizeof(humidity)];
+    humidityalschar = (char) humidty;
+    char humidityuebergnag[25] = "[humidity = ";
+    strcat(humidityuebergnag, humidityalschar);
+    strcat(humidityuebergnag, "]\n");
+
+    strcat(server_message, humidityuebergnag);
 
         printf("Light erkannt\n");
-        int port = 4; //connect the light sensor to this port
+        int portlight = 4; //connect the light sensor to this port
         int led = 2; //connect a LED to this port
         int value;
         float resistance;
@@ -63,10 +67,10 @@ int main(){
         if(init()==-1)
             exit(1);
 
-        pinMode(port,INPUT);
+        pinMode(portlight,INPUT);
         pinMode(led, OUTPUT);
         //read from the analog Port
-        value = analogRead(port);
+        value = analogRead(portlight);
         //calculate the resistance of the light sensor
         resistance = (float)(1023 - value) * 10 / value;
         //if the resitance passes threshhold, turn on the LED
@@ -75,23 +79,39 @@ int main(){
         else
             digitalWrite(led, 0);
 
-    strcat(server_message, "Value: %d  Resistance: %0.2f \n", value, resistance);
+    char resitancealschar[sizeof(resistance)];
+    resitancealschar = (char) resistance;
+    char valuealschar[sizeof(value)];
+    valuealschar = (char) value;
+    char valresuebergang[25] = "[Value: ";
+    strcat(valresuebergang, valuealschar);
+    strcat(valresuebergang, " Resistance: ");
+    strcat(valresuebergang, resitancealschar);
+    strcat(valresuebergang, "]\n");
+
+    strcat(server_message, valresuebergang);
 
         pi_sleep(100); //wait 0,1s
 
         printf("Sound erkannt\n");
-        int port = 3; //Audio-Sensor an analogen Port A0 anschließen
+        int portsound = 3; //Audio-Sensor an analogen Port A0 anschließen
         int sound = 0; //Lautstärke
 
         init(); //Initialisierung des GrovePi's
-        pinMode(port, INPUT); //Modus festlegen (pinMode([PinNr.],[0(INPUT)/1(OUTPUT)])
+        pinMode(portsound, INPUT); //Modus festlegen (pinMode([PinNr.],[0(INPUT)/1(OUTPUT)])
 
         pi_sleep(1000); //warte 1s
 
         // do indefinitely
-        sound = analogRead(port); //Frage Port A0 ab und speichere Wert in Variable
-    strcat(server_message, "SOUND: %d db\n", sound);
+        sound = analogRead(portsound); //Frage Port A0 ab und speichere Wert in Variable
 
+    char soundalschar[sizeof(sound)];
+    soundalschar = (char) sound;
+    char sounduebergang[25] = "[sound in db = ";
+    strcat(sounduebergang, soundalschar);
+    strcat(sounduebergang, "]\n");
+
+    strcat(server_message, sounduebergang);
         pi_sleep(100); //warte 0,1s
 
     //Erstelle Server Socket

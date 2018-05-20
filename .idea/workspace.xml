@@ -9,7 +9,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69558496-f85f-4a3b-b328-e1d8c3d9dc30" name="Default" comment="" />
+    <list default="true" id="69558496-f85f-4a3b-b328-e1d8c3d9dc30" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/server.c" beforeDir="false" afterPath="$PROJECT_DIR$/server.c" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +34,8 @@
       <file leaf-file-name="server.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+            <state relative-caret-position="645">
+              <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -44,6 +46,7 @@
     <findStrings>
       <find>network_socket</find>
       <find>server_ad</find>
+      <find>temp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,12 +144,12 @@
       <workItem from="1525781986220" duration="321000" />
       <workItem from="1525956734497" duration="1567000" />
       <workItem from="1525958572734" duration="30000" />
-      <workItem from="1526817995017" duration="5841000" />
+      <workItem from="1526817995017" duration="6762000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19125000" />
+    <option name="totallyTimeSpent" value="20046000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1839" height="1191" extended-state="6" />
@@ -268,8 +271,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        <state relative-caret-position="645">
+          <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
         </state>
       </provider>
     </entry>
