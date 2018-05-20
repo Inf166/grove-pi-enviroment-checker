@@ -28,7 +28,7 @@ int main(){
         getTemperature(&temp, port);
 
     char temperaturinchar[sizeof(temp)];
-    temperaturinchar = (char) temp;
+    strcat(temperaturinchar, (char *) &temp);
     char tempuebergang[25] = "[temp = ";
     strcat(tempuebergang, temperaturinchar);
     strcat(tempuebergang, "]\n");
@@ -38,7 +38,7 @@ int main(){
         printf("Humidity erkannt\n");
 
 
-        init(); //Initialisierung des GrovePi's
+
         pinMode(port, INPUT); //Modus festlegen (pinMode([PortNr.],[0(INPUT)/1(OUTPUT)])
 
         pi_sleep(1000); //wait 1s
@@ -48,7 +48,7 @@ int main(){
         getHumidity(&humidity, port);
 
     char humidityalschar[sizeof(humidity)];
-    humidityalschar = (char) humidty;
+    strcat(humidityalschar, (char *) &humidity);
     char humidityuebergnag[25] = "[humidity = ";
     strcat(humidityuebergnag, humidityalschar);
     strcat(humidityuebergnag, "]\n");
@@ -63,9 +63,7 @@ int main(){
         //threshhold to pass
         int threshhold = 10;
 
-        //Exit on failure to start communications with the GrovePi
-        if(init()==-1)
-            exit(1);
+
 
         pinMode(portlight,INPUT);
         pinMode(led, OUTPUT);
@@ -80,9 +78,9 @@ int main(){
             digitalWrite(led, 0);
 
     char resitancealschar[sizeof(resistance)];
-    resitancealschar = (char) resistance;
+    strcat(resitancealschar, (char *) &resistance);
     char valuealschar[sizeof(value)];
-    valuealschar = (char) value;
+    strcat(valuealschar, (char *) &value);
     char valresuebergang[25] = "[Value: ";
     strcat(valresuebergang, valuealschar);
     strcat(valresuebergang, " Resistance: ");
@@ -97,7 +95,7 @@ int main(){
         int portsound = 3; //Audio-Sensor an analogen Port A0 anschließen
         int sound = 0; //Lautstärke
 
-        init(); //Initialisierung des GrovePi's
+
         pinMode(portsound, INPUT); //Modus festlegen (pinMode([PinNr.],[0(INPUT)/1(OUTPUT)])
 
         pi_sleep(1000); //warte 1s
@@ -106,37 +104,37 @@ int main(){
         sound = analogRead(portsound); //Frage Port A0 ab und speichere Wert in Variable
 
     char soundalschar[sizeof(sound)];
-    soundalschar = (char) sound;
+    strcat(soundalschar, (char *) &sound);
     char sounduebergang[25] = "[sound in db = ";
     strcat(sounduebergang, soundalschar);
     strcat(sounduebergang, "]\n");
 
     strcat(server_message, sounduebergang);
-        pi_sleep(100); //warte 0,1s
+    pi_sleep(100); //warte 0,1s
 
-    //Erstelle Server Socket
-    int server_socket;
-    server_socket = socket(AF_INET, SOCK_STREAM, 0);
+        //Erstelle Server Socket
+        int server_socket;
+        server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
-    //Definiere Server Adress-Familie
-    struct sockaddr_in server_address;
-    server_address.sin_family = AF_INET;           //Adress-Familie
-    server_address.sin_port = htons(5678);         //Portnummer
-    server_address.sin_addr.s_addr = INADDR_ANY;   //Vlt noch ändern in IP Adresse
+        //Definiere Server Adress-Familie
+        struct sockaddr_in server_address;
+        server_address.sin_family = AF_INET;           //Adress-Familie
+        server_address.sin_port = htons(5678);         //Portnummer
+        server_address.sin_addr.s_addr = INADDR_ANY;   //Vlt noch ändern in IP Adresse
 
-    //bind den socket zu unser IP und port
-    bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
+        //bind den socket zu unser IP und port
+        bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
 
-    //listen to conections
-    listen(server_socket, 5);
+        //listen to conections
+        listen(server_socket, 5);
 
-    int client_socket;
+        int client_socket;
 
-    //accept Funktion      Server Socket    IP des Clients      Size of IP
-    client_socket = accept(server_socket, NULL, NULL);
-    //Send Funktion     Clientsocket, definierte Nachricht und Size of der Nachricht
-    send(client_socket, server_message, sizeof(server_message), 0);
-    //close Funktion
-    close(server_socket);
+        //accept Funktion      Server Socket    IP des Clients      Size of IP
+        client_socket = accept(server_socket, NULL, NULL);
+        //Send Funktion     Clientsocket, definierte Nachricht und Size of der Nachricht
+        send(client_socket, server_message, sizeof(server_message), 0);
+        //close Funktion
+        close(server_socket);
     return 0;
 }
