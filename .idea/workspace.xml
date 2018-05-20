@@ -9,9 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69558496-f85f-4a3b-b328-e1d8c3d9dc30" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="69558496-f85f-4a3b-b328-e1d8c3d9dc30" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,11 +20,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="client.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="client.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="544">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -35,8 +42,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>server_ad</find>
       <find>network_socket</find>
+      <find>server_ad</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -47,12 +54,12 @@
       <list>
         <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/schritt1.c" />
-        <option value="$PROJECT_DIR$/server.c" />
         <option value="$PROJECT_DIR$/AAA Pi Gui/gui.c" />
         <option value="$PROJECT_DIR$/AAA Pi praktikum/schritt1.c" />
         <option value="&lt;e7487de5-8aa7-47dd-8723-006ae256b980&gt;/Projekt37/server.c" />
         <option value="&lt;e7487de5-8aa7-47dd-8723-006ae256b980&gt;/Projekt37/client.c" />
         <option value="$PROJECT_DIR$/client.c" />
+        <option value="$PROJECT_DIR$/server.c" />
       </list>
     </option>
   </component>
@@ -134,23 +141,23 @@
       <workItem from="1525781986220" duration="321000" />
       <workItem from="1525956734497" duration="1567000" />
       <workItem from="1525958572734" duration="30000" />
-      <workItem from="1526817995017" duration="3232000" />
+      <workItem from="1526817995017" duration="5841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16516000" />
+    <option name="totallyTimeSpent" value="19125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1839" height="1191" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Remote Host" order="3" visible="true" weight="0.16020235" />
+      <window_info active="true" anchor="right" id="Remote Host" order="3" visible="true" weight="0.16020235" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11017425" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="CMake" order="7" sideWeight="0.49967083" weight="0.29099527" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50032914" side_tool="true" weight="0.3068182" />
-      <window_info active="true" anchor="bottom" id="File Transfer" order="7" visible="true" weight="0.25308058" />
+      <window_info anchor="bottom" id="File Transfer" order="7" visible="true" weight="0.25308058" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -224,7 +231,6 @@
     <entry file="file://$PROJECT_DIR$/schritt1.c" />
     <entry file="file://$PROJECT_DIR$/main.c" />
     <entry file="file://$PROJECT_DIR$/schritt1.c" />
-    <entry file="file://$PROJECT_DIR$/server.c" />
     <entry file="file://$PROJECT_DIR$/LCD/lcd_test_example.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -255,8 +261,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="544">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
         </state>
       </provider>
     </entry>
