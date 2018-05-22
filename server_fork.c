@@ -50,7 +50,7 @@ int main(){
         neue = accept(server_socket, (struct sockaddr *) &clientaddr, &len);
         if ((pid = fork()) == -1)
         {
-            while(1) {
+            while(1) {//Gruppe 59 aus ästetikgründen hier übernommen 
                 char client_cmd[256];
                 recv(client_socket, &client_cmd, sizeof(client_cmd), 0);
                 printf("Client: %s\n", client_cmd);

@@ -41,7 +41,7 @@
         client_socket = accept(server_socket, NULL, NULL);
         //Send Funktion     Clientsocket, definierte Nachricht und Size of der Nachricht
         send(client_socket, server_message, sizeof(server_message), 0);
-        while(1) {
+        while(1) {//Gruppe 59 aus ästetikgründen hier übernommen 
             char client_command[256];
             recv(client_socket, &client_command, sizeof(client_command), 0);
             printf("Client: %s\n", client_command);
