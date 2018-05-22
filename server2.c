@@ -42,31 +42,31 @@
         //Send Funktion     Clientsocket, definierte Nachricht und Size of der Nachricht
         send(client_socket, server_message, sizeof(server_message), 0);
         while(1) {
-            char client_cmd[256];
-            recv(client_socket, &client_cmd, sizeof(client_cmd), 0);
-            printf("Client: %s\n", client_cmd);
-            if (strcmp(client_cmd, "GET TEMP") == 0) {
-                float f = getTemp(8);
+            char client_command[256];
+            recv(client_socket, &client_command, sizeof(client_command), 0);
+            printf("Client: %s\n", client_command);
+            if (strcmp(client_command, "GET TEMP") == 0) {
+                float f = getTemperature(8);
                 printf("[temp = %2.02f C]\n", f);
                 char *value = (char *) &f;
                 send(client_socket, value, sizeof(value), 0);
-            } else if (strcmp(client_cmd, "GET HUMIDITY") == 0) {
-                float f = getLuftfeuchtigkeit(8);
+            } else if (strcmp(client_command, "GET HUMIDITY") == 0) {
+                float f = getHumidity(8);
                 printf("[humidity = %.02f%%]\n", f);
                 char *value = (char *) &f;
                 send(client_socket, value, sizeof(value), 0);
-            } else if (strcmp(client_cmd, "GET LIGHT") == 0) {
+            } else if (strcmp(client_command, "GET LIGHT") == 0) {
                 int f = getLicht(4);
                 printf("Light value: %d  Resistance: %0.2f \n", f);
                 char value = (char *) &f;
                 send(client_socket, value, sizeof(value), 0);
-            } else if (strcmp(client_cmd, "GET SOUND") == 0) {
-                int f = getSound(3);
+            } else if (strcmp(client_command, "GET SOUND") == 0) {
+                int f = getsound(3);
                 printf("SOUND: %d\n", f);
                 char *value = (char *) &f;
                 send(client_socket, value, sizeof(value), 0);
             } else {
-                send(client_socket, client_cmd, sizeof(client_cmd), 0);
+                send(client_socket, client_command, sizeof(client_command), 0);
             }
         }
         //close Funktion
@@ -75,24 +75,24 @@
     }
 
 
-float getTemp(int port);
+float getTemperature(int port);
 
-int getSound(int port);
+int getsound(int port);
 
-float getLuftfeuchtigkeit(int port);
+float getHumidity(int port);
 
 int getLicht(int port);
 
-float getTemp(int port)
+float getTemperature(int port)
 {
     float temp = 0;
     pinMode(port, INPUT);
     pi_sleep(1000);
-    getTemperature(&temp, port);
+    getTemperatureerature(&temp, port);
     return temp;
 }
 
-float getLuftfeuchtigkeit(int port)
+float getHumidity(int port)
 {
     float humidity = 0;
     getHumidity(&humidity, port);
@@ -110,7 +110,7 @@ int getLicht(int port)
     return value;
 }
 
-int getSound(int port)
+int getsound(int port)
 {
     int sound = 0;
     pinMode(port, INPUT);

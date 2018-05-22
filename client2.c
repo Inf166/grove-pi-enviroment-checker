@@ -31,17 +31,16 @@ int main() {
     {
         while(1)
         {
-            char client_cmd[50] = {0};
-            scanf ("%[^\n]%*c", &client_cmd);
+            char client_command[50] = {0};
+            scanf ("%[^\n]%*c", &client_command);
             int i = 0;
-            while(client_cmd[i])
+            while(client_command[i])
             {
-                client_cmd[i] = toupper(client_cmd[i]);
+                client_command[i] = toupper(client_command[i]);
                 i++;
             }
-            printf("Die Eingabe ist: %s \n", client_cmd);
-
-            send(network_socket,client_cmd,sizeof(client_cmd),0);
+            printf("Die Eingabe ist: %s \n", client_command);
+            send(network_socket,client_command,sizeof(client_command),0);
             char server_response[256];
             recv(bs_socket,&server_response,sizeof(server_response),0);
             printf("Server: %s\n",server_response);
