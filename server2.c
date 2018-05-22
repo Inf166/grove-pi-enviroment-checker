@@ -15,58 +15,6 @@
 #define INPUT 0
 #define OUTPUT 1
 
-float getTemp(int port);
-
-int getSound(int port);
-
-float getLuftfeuchtigkeit(int port);
-
-int getLicht(int port);
-
-float getTemp(int port)
-{
-    float temp = 0;
-    pinMode(port, INPUT);
-    pi_sleep(1000);
-    getTemperature(&temp, port);
-    return temp;
-}
-
-float getLuftfeuchtigkeit(int port)
-{
-    float humidity = 0;
-    getHumidity(&humidity, port);
-    pi_sleep(1000); //wait 1s
-    return humidity;
-
-}
-
-int getLicht(int port)
-{
-    int value;
-    float resistance;
-    value = analogRead(port);
-    resistance = (float)(1023 - value) * 10 / value;
-    return value;
-}
-
-int getSound(int port)
-{
-    int sound = 0;
-    pinMode(port, INPUT);
-    pi_sleep(1000);
-    int i = 0;
-    int summe = 0;
-    while(i<5)
-    {
-        sound = analogRead(port);
-        pi_sleep(100);
-        summe = summe + sound;
-        i++;
-    }
-    return summe / i;
-}
-
     int main(){
         char server_message[256] = "Du hast den Server erreicht";
         strcat(server_message, "\n");
@@ -126,3 +74,55 @@ int getSound(int port)
         return 0;
     }
 
+
+float getTemp(int port);
+
+int getSound(int port);
+
+float getLuftfeuchtigkeit(int port);
+
+int getLicht(int port);
+
+float getTemp(int port)
+{
+    float temp = 0;
+    pinMode(port, INPUT);
+    pi_sleep(1000);
+    getTemperature(&temp, port);
+    return temp;
+}
+
+float getLuftfeuchtigkeit(int port)
+{
+    float humidity = 0;
+    getHumidity(&humidity, port);
+    pi_sleep(1000); //wait 1s
+    return humidity;
+
+}
+
+int getLicht(int port)
+{
+    int value;
+    float resistance;
+    value = analogRead(port);
+    resistance = (float)(1023 - value) * 10 / value;
+    return value;
+}
+
+int getSound(int port)
+{
+    int sound = 0;
+    pinMode(port, INPUT);
+    pi_sleep(1000);
+    int i = 0;
+    int summe = 0;
+    while(i<5)
+    {
+        sound = analogRead(port);
+        pi_sleep(100);
+        summe = summe + sound;
+        i++;
+    }
+    return summe / i;
+}
