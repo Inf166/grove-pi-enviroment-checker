@@ -148,7 +148,6 @@ int getLicht(int port)
     int value;
     float resistance;
     value = analogRead(port);
-    resistance = (float)(1023 - value) * 10 / value;
     return value;
 }
 
