@@ -58,7 +58,7 @@ int main(){
             return (i);
         }
     while (1) {
-        neue = accept(server_socket, (struct sockaddr *) &clientaddr, &len);
+        neue = accept(server_socket, (struct sockaddr *) &clientaddr, (socklen_t) &len);
         if ((pid = fork()) == -1)
         {
             close(neue);
@@ -82,28 +82,30 @@ int main(){
                 char client_cmd[256];
                 recv(client_socket, &client_cmd, sizeof(client_cmd), 0);
                 printf("Client: %s\n", client_cmd);
-                if (strcmp(client_cmd, "GET TEMP") == 0) {
-                    float f = getTemperatureerature(8);
-                    printf("[temp = %2.02f C]\n", f);
-                    char *value = (char *) &f;
-                    send(client_socket, value, sizeof(value), 0);
-                } else if (strcmp(client_cmd, "GET HUMIDITY") == 0) {
-                    float f = getHumidty(8);
-                    printf("[humidity = %.02f%%]\n", f);
-                    char *value = (char *) &f;
-                    send(client_socket, value, sizeof(value), 0);
-                } else if (strcmp(client_cmd, "GET LIGHT") == 0) {
-                    int f = getLicht(4);
-                    printf("Light value: %d  Resistance: %0.2f \n", f);
-                    char value = (char *) &f;
-                    send(client_socket, value, sizeof(value), 0);
-                } else if (strcmp(client_cmd, "GET SOUND") == 0) {
-                    int f = getsound(3);
-                    printf("SOUND: %d\n", f);
-                    char *value = (char *) &f;
-                    send(client_socket, value, sizeof(value), 0);
-                } else {
-                    send(client_socket, client_cmd, sizeof(client_cmd), 0);
+                if(strcmp(client_cmd[0], "GET") == 0) {
+                    if (strcmp(client_cmd, "TEMP") == 0) {
+                        float f = getTemperatureerature(8);
+                        printf("[temp = %2.02f C]\n", f);
+                        char *value = (char *) &f;
+                        send(client_socket, value, sizeof(value), 0);
+                    } else if (strcmp(client_cmd[1], "HUMIDITY") == 0) {
+                        float f = getHumidty(8);
+                        printf("[humidity = %.02f%%]\n", f);
+                        char *value = (char *) &f;
+                        send(client_socket, value, sizeof(value), 0);
+                    } else if (strcmp(client_cmd[1], "LIGHT") == 0) {
+                        int f = getLicht(4);
+                        printf("Light value: %d  Resistance: %0.2f \n", f);
+                        char value = (char *) &f;
+                        send(client_socket, value, sizeof(value), 0);
+                    } else if (strcmp(client_cmd[1], "SOUND") == 0) {
+                        int f = getsound(3);
+                        printf("SOUND: %d\n", f);
+                        char *value = (char *) &f;
+                        send(client_socket, value, sizeof(value), 0);
+                    } else {
+                        send(client_socket, client_cmd, sizeof(client_cmd), 0);
+                    }
                 }
             }
             close(neue);
