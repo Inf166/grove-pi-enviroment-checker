@@ -24,7 +24,10 @@ int main(){
     //Erstelle Server Socket
     int server_socket;
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
-
+    if (server_socket == -1) { //Stackoverflow übernommen
+        printf("Error: unable to open a socket\n");
+        exit(1);
+    }
     //Definiere Server Adress-Familie
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;           //Adress-Familie
@@ -32,16 +35,32 @@ int main(){
     server_address.sin_addr.s_addr = INADDR_ANY;   //Vlt noch ändern in IP Adresse
 
     //bind den socket zu unser IP und port
-    bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
-    
+    //    bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
+    if ((bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address))) == -1) { // Stackoverflow übernommen
+        printf("Error: unable to bind\n");
+        printf("Error code: %d\n", errno);
+        exit(1);
+    } else{
+        bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
+    }
     //listen to conections
     listen(server_socket, 5);
-
+    if ((listen(server_socket, 5)) == -1) { // Stackoverflow übernommen
+        printf("Error: unable to listen for connections\n");
+        printf("Error code: %d\n", errno);
+        exit(1);
+    }else{
+        listen(server_socket, 5);
+    }
     int client_socket;
 
     //accept Funktion      Server Socket    IP des Clients      Size of IP
-    client_socket = accept(server_socket, NULL, NULL);
-
+    client_socket = accept(server_socket, NULL, NULL); // Stackoverflow übernommen
+    if (client_socket == -1) {
+        printf("Error: unable to accept connections\n");
+        printf("Error code: %d\n", errno);
+        exit(1);
+    }
     //Send Funktion     Clientsocket, definierte Nachricht und Size of der Nachricht
     send(client_socket, server_message, sizeof(server_message), 0);
     int pid, neue;
