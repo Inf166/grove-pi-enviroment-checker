@@ -33,7 +33,7 @@ int main(){
 
     //bind den socket zu unser IP und port
     bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
-
+    
     //listen to conections
     listen(server_socket, 5);
 
@@ -41,6 +41,7 @@ int main(){
 
     //accept Funktion      Server Socket    IP des Clients      Size of IP
     client_socket = accept(server_socket, NULL, NULL);
+
     //Send Funktion     Clientsocket, definierte Nachricht und Size of der Nachricht
     send(client_socket, server_message, sizeof(server_message), 0);
     int pid, neue;
