@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69558496-f85f-4a3b-b328-e1d8c3d9dc30" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_fork.c" beforeDir="false" afterPath="$PROJECT_DIR$/server_fork.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -62,8 +61,8 @@
       <file leaf-file-name="server_fork.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server_fork.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+            <state relative-caret-position="480">
+              <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -143,7 +142,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -185,12 +184,12 @@
       <workItem from="1526984302649" duration="138000" />
       <workItem from="1526985317218" duration="105000" />
       <workItem from="1527073454946" duration="450000" />
-      <workItem from="1527076408070" duration="34000" />
+      <workItem from="1527076408070" duration="449000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23903000" />
+    <option name="totallyTimeSpent" value="24318000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1839" height="1191" extended-state="6" />
@@ -199,8 +198,9 @@
       <window_info anchor="right" id="Remote Host" order="3" visible="true" weight="0.15964025" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11410905" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="CMake" order="7" sideWeight="0.49967083" visible="true" weight="0.2900474" />
+      <window_info anchor="bottom" id="CMake" order="7" sideWeight="0.49967083" weight="0.2900474" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50032914" side_tool="true" weight="0.3068182" />
+      <window_info anchor="bottom" id="File Transfer" order="7" visible="true" weight="0.25285172" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -213,7 +213,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="File Transfer" order="7" visible="true" weight="0.2527233" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
@@ -473,8 +472,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server_fork.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+        <state relative-caret-position="480">
+          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
         </state>
       </provider>
     </entry>

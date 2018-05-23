@@ -45,7 +45,18 @@ int main(){
     send(client_socket, server_message, sizeof(server_message), 0);
     int pid, neue;
     static int counter=0;
+    /*String Token trennt string anhand von Trennzeichen auf*/
+        strtok(str, separator);
 
+
+    /* Kleine Hilfsfunktion von uns für euch: Speichert die erstellten Tokens direkt in einem Array*/
+        int strtoken(char *str, char *separator, char **token, int size) {
+            int i=0;
+            token[0] = strtok(str, separator);
+            while(token[i++] && i < size)
+                token[i] = strtok(NULL, separator);
+            return (i);
+        }
     while (1) {
         neue = accept(server_socket, (struct sockaddr *) &clientaddr, &len);
         if ((pid = fork()) == -1)
