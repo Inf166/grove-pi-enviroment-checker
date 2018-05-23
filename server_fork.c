@@ -50,6 +50,23 @@ int main(){
         neue = accept(server_socket, (struct sockaddr *) &clientaddr, &len);
         if ((pid = fork()) == -1)
         {
+            close(neue);
+            continue;
+        }
+        else if (pid > 0)
+        {
+            close(neue);
+            counter++;
+            printf("here2/n");
+            continue;
+        }
+        else if (pid == 0)
+        {
+            char buf[100];
+            counter++;
+            printf("here 1/n");
+            snprintf(buf, sizeof buf, "hi %d", counter);
+            send (neue, buf, strlen(buf), 0);
             while(1) {//Code von Gruppe 59 übernommen
                 char client_cmd[256];
                 recv(client_socket, &client_cmd, sizeof(client_cmd), 0);
@@ -78,23 +95,6 @@ int main(){
                     send(client_socket, client_cmd, sizeof(client_cmd), 0);
                 }
             }
-            close(neue);
-            continue;
-        }
-        else if (pid > 0)
-        {
-            close(neue);
-            counter++;
-            printf("here2/n");
-            continue;
-        }
-        else if (pid == 0)
-        {
-            char buf[100];
-            counter++;
-            printf("here 1/n");
-            snprintf(buf, sizeof buf, "hi %d", counter);
-            send (neue, buf, strlen(buf), 0);
             close(neue);
             break;
         }
