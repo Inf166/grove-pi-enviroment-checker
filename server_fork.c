@@ -173,3 +173,39 @@ int main(){
     return 0;
 }
 
+<<<<<<< HEAD
+=======
+float getHumidty(int port)
+{
+    float humidity = 0;
+    getHumidity(&humidity, port);
+    pi_sleep(1000); //wait 1s
+    return humidity;
+
+}
+
+int getLicht(int port)
+{
+    int value;
+    float resistance;
+    value = analogRead(port);
+    return value;
+}
+
+int getsound(int port)
+{
+    int sound = 0;
+    pinMode(port, INPUT);
+    pi_sleep(1000);
+    int i = 0;
+    int summe = 0;
+    while(i<5)
+    {
+        sound = analogRead(port);
+        pi_sleep(100);
+        summe = summe + sound;
+        i++;
+    }
+    return summe / i;
+}
+>>>>>>> mi2016/server_forkc-1527076795600
