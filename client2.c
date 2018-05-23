@@ -29,7 +29,7 @@ int main() {
     }
     else
     {
-        while(1)//Gruppe 59 aus ästetikgründen hier übernommen 
+        while(1)//While Schleife von Gruppe 59 übernommen 
         {
             char client_command[50] = {0};
             scanf ("%[^\n]%*c", &client_command);
