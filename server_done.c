@@ -16,7 +16,20 @@
 #define INPUT 0
 #define OUTPUT 1
 
+// Raspberry-Funktionen anlegegen
+float getTemp(int port);
+
+int getSound(int port);
+
+float getLuftfeuchtigkeit(int port);
+
+int getLicht(int port);
+
+
 int main(){
+  
+	init(); //Raspberry init.
+  
     char server_message[256] = "Du hast den Server erreicht.\n";           //Server Nachricht an Client - hier vorgeschrieben
     //Erstelle Server Socket
         int server_socket;
@@ -90,7 +103,8 @@ int main(){
             printf("here 1/n");
             snprintf(buf, sizeof buf, "hi %d", counter);
             send (neue, buf, strlen(buf), 0);
-            while(1) {//Code von Gruppe 59 übernommen
+          	boolean running=true;
+            while(running) {//Code von Gruppe 59 übernommen
                 char client_cmd[256];
                 recv(client_socket, &client_cmd, sizeof(client_cmd), 0);
                 printf("Client: %s\n", client_cmd);
@@ -112,7 +126,10 @@ int main(){
                     int f = getsound(3);
                     printf("SOUND: %d\n", f);
                     fprintf(client_socket, "SOUND: %d\n", f);
+                } else if ((strcmp(client_cmd, "END") == 0)||(strcmp(client_cmd, "END\n") == 0)) {
+                    running=false;
                 } else {
+                  
                     fprintf(client_socket,"Fehlerhafte Eingabe");
                 }
 
@@ -124,5 +141,50 @@ int main(){
     //close Funktion
     close(server_socket);
     return 0;
+}
+
+// Raspberry-Fubktionen definieren - Übernommen von Team 59
+float getTemp(int port)
+{
+	float temp = 0;
+    pinMode(port, INPUT);
+    pi_sleep(1000);
+	getTemperature(&temp, port);
+    return temp;
+}
+
+float getLuftfeuchtigkeit(int port)
+{
+	float humidity = 0;
+    getHumidity(&humidity, port);
+	pi_sleep(1000); //wait 1s
+	return humidity;
+
+}
+
+int getLicht(int port)
+{
+    int value;
+    float resistance;
+    value = analogRead(port);
+    resistance = (float)(1023 - value) * 10 / value;
+	return value;
+}
+
+int getSound(int port)
+{
+	int sound = 0;
+	pinMode(port, INPUT);
+	pi_sleep(1000);
+	int i = 0;
+	int summe = 0;
+	while(i<5)
+	{
+        sound = analogRead(port);
+        pi_sleep(100);
+        summe = summe + sound;
+        i++;
+	}
+	return summe / i;
 }
 
