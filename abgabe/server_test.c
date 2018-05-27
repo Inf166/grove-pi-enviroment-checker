@@ -12,7 +12,7 @@
 #include <errno.h>
 
 //#include "../grovepi/grovepi.c" //Muss für Raspberry-Funktionen aktiv sein
-
+// TODO Portfreigabe muss noch eingebaut werden - Raspberry Funktionen - Logik der Schleifen (Doppelte Ausgabe)
 
 #define INPUT 0
 #define OUTPUT 1
