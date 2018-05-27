@@ -4,7 +4,7 @@
 //Include Libaries
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <string.h>
@@ -56,12 +56,12 @@ int main(){
 
     //Lege Client Socket an
         struct sockaddr_in client;
-        int client_len=sizeof(client);
+        socklen_t client_len=sizeof(client);
 
     int pid, fileDesc;
     static int counter=0;
     while (1) {
-        fileDesc = accept(server_socket, (struct sockaddr *) &client, (socklen_t*) &client_len);
+        fileDesc = accept(server_socket, (struct sockaddr *) &client, client_len);
         puts("Verbindung akzeptiert\n");
         if ((pid = fork()) <0) // Fehlerfall im FORK
         {
@@ -84,7 +84,7 @@ int main(){
             snprintf(buf, sizeof buf, "Hallo Nutzer %d\n", counter);
             send (fileDesc, buf, strlen(buf), 0);
           	int running=1;
-            while(running==1) { //running als Abbruchsbedingung für die Kommunikation - Wird running geändert ist die Server-Client-Kommunikation abgeschlossen
+            while(running) { //running als Abbruchsbedingung für die Kommunikation - Wird running geändert ist die Server-Client-Kommunikation abgeschlossen
                 char client_cmd[256];
                 char *args[2];
                 recv(fileDesc, &client_cmd, sizeof(client_cmd), 0);
@@ -97,25 +97,25 @@ int main(){
                       char message [40]={0};
                       float t=getTemp(8); //Fordere den gesuchten Wert vom Raspberry an (Ausgelagerte Funktionen)
                       sprintf(message,"Temperatur: %.02f C\n",t); //Gibt Wert aus und speichert in message
-                      fflush(stdout);
+
                       send (fileDesc, message, strlen(message), 0); //schickt message an den Client
                   } else if (strcmp(args[1], "HUMIDITY") == 0) {
                       char message [40]={0};
                       float t=getLuftfeuchtigkeit(8);
                       sprintf(message,"Luftfeuchtigkeit: %.02f Prozent \n",t);
-                      fflush(stdout);
+
                       send (fileDesc, message, strlen(message), 0);
                   } else if (strcmp(args[1], "LIGHT") == 0) {
                       char message [40]={0};
                       int t=getLicht(4);
                       sprintf(message,"Resistance: %d\n",t);
-                      fflush(stdout);
+
                       send (fileDesc, message, strlen(message), 0);
                   } else if (strcmp(args[1], "SOUND") == 0) {
                       char message [40]={0};
                       int t = getSound(3);
                       sprintf(message,"Sound: %d\n",t);
-                      fflush(stdout);
+
                       send (fileDesc, message, strlen(message), 0);
                   } else{ //Ist das 2. Wort unbekannt git es eine Fehlermeldung
                     char message [40]={0};
