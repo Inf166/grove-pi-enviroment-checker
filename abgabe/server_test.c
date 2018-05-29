@@ -5,14 +5,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <string.h>
 #include <netinet/in.h>
 #include <errno.h>
 
-//#include "../grovepi/grovepi.c" //Muss für Raspberry-Funktionen aktiv sein
-// TODO Portfreigabe muss noch eingebaut werden - Raspberry Funktionen - Logik der Schleifen (Doppelte Ausgabe)
+//#include "../grovepi.c" //Muss für Raspberry-Funktionen aktiv sein
+//TODO Raspberry Funktionen - Logik der Schleifen (Doppelte Ausgabe) haha
 
 #define INPUT 0
 #define OUTPUT 1
@@ -44,6 +45,9 @@ int main(){
         server_address.sin_port = htons(5678);         //Portnummer
         server_address.sin_addr.s_addr = INADDR_ANY;   //Vlt noch ändern in IP Adresse
 
+        int option = 1;
+        setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, (const void *) &option, sizeof(int)); //int eventuell option
+
     //bind den socket zu unser IP und port
         if ((bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address))) <0) {
             perror("Error: unable to bind\n"); // Wenn bind fehlschlägt gibt es eine Fehlermeldug.
@@ -56,12 +60,12 @@ int main(){
 
     //Lege Client Socket an
         struct sockaddr_in client;
-        socklen_t client_len=sizeof(client);
-
+        socklen_t client_len=sizeof(struct sockaddr_in);
+        puts("Warte immernoch...\n");
     int pid, fileDesc;
     static int counter=0;
     while (1) {
-        fileDesc = accept(server_socket, (struct sockaddr *) &client, client_len);
+        fileDesc = accept(server_socket, (struct sockaddr *) &client, &client_len);
         puts("Verbindung akzeptiert\n");
         if ((pid = fork()) <0) // Fehlerfall im FORK
         {
@@ -149,17 +153,17 @@ int main(){
 float getTemp(int port)
 {
 	float temp = 10; // Beispieldaten. Muss =0 wenn Raspberry aktiv
-  //  pinMode(port, INPUT);  //Muss für Raspberry-Funktionen aktiv sein
-  //  pi_sleep(1000);  //Muss für Raspberry-Funktionen aktiv sein
-	//getTemperature(&temp, port);  //Muss für Raspberry-Funktionen aktiv sein
+//    pinMode(port, INPUT);  //Muss für Raspberry-Funktionen aktiv sein
+//    pi_sleep(1000);  //Muss für Raspberry-Funktionen aktiv sein
+//	getTemperature(&temp, port);  //Muss für Raspberry-Funktionen aktiv sein
     return temp;
 }
 
 float getLuftfeuchtigkeit(int port)
 {
 	float humidity = 20; // Beispieldaten. Muss =0 wenn Raspberry aktiv
-    //getHumidity(&humidity, port);  //Muss für Raspberry-Funktionen aktiv sein
-	//pi_sleep(1000); //wait 1s  //Muss für Raspberry-Funktionen aktiv sein
+//    getHumidity(&humidity, port);  //Muss für Raspberry-Funktionen aktiv sein
+//	pi_sleep(1000); //wait 1s  //Muss für Raspberry-Funktionen aktiv sein
 	return humidity;
 
 }
@@ -167,18 +171,18 @@ float getLuftfeuchtigkeit(int port)
 int getLicht(int port)
 {
     int value=30; // Beispieldaten. Muss =0 wenn Raspberry aktiv
-    //float resistance;  //Muss für Raspberry-Funktionen aktiv sein
-    //value = analogRead(port);  //Muss für Raspberry-Funktionen aktiv sein
-    //resistance = (float)(1023 - value) * 10 / value;  //Muss für Raspberry-Funktionen aktiv sein
-  //return resistance;  //Muss für Raspberry-Funktionen aktiv sein
+//    float resistance;  //Muss für Raspberry-Funktionen aktiv sein
+//    value = analogRead(port);  //Muss für Raspberry-Funktionen aktiv sein
+//    resistance = (float)(1023 - value) * 10 / value;  //Muss für Raspberry-Funktionen aktiv sein
+//    return resistance;  //Muss für Raspberry-Funktionen aktiv sein
 	return value;  //Muss für Raspberry-Funktionen INAKTIV sein
 }
 
 int getSound(int port)
 {
 	int sound = 40; // Beispieldaten. Muss =0 wenn Raspberry aktiv
-	//pinMode(port, INPUT);  //Muss für Raspberry-Funktionen aktiv sein
-	//pi_sleep(1000);  //Muss für Raspberry-Funktionen aktiv sein
+//	pinMode(port, INPUT);  //Muss für Raspberry-Funktionen aktiv sein
+//	pi_sleep(1000);  //Muss für Raspberry-Funktionen aktiv sein
 //	int i = 0;  //Muss für Raspberry-Funktionen aktiv sein
 //	int summe = 0;  //Muss für Raspberry-Funktionen aktiv sein
 //	while(i<5)  //Muss für Raspberry-Funktionen aktiv sein

@@ -1,4 +1,4 @@
-#include "../grovepi.h"
+#include "grovepi.h"
 #include <stdio.h>
 #include <string.h>
 

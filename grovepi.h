@@ -65,7 +65,7 @@ void SMBusName(char *smbus_name);
 int initDevice(uint8_t address);
 
 const static uint8_t DHT_TEMP_CMD = 40; // command for reaching DTH sensor on the GrovePi
-const static int MAX_RETRIES = 3;       //Max retries for connecting via I2C
+const static int MAX_RETRIES = 100;       //Max retries for connecting via I2C
 
 void getSafeTemperatureAndHumidityData(float *temp, float *humidity, int port); //get checked Data from Temperature / Humidity sensor
 void getUnsafeTemperatureAndHumidityData(float *temp, float *humidity, int port); //get data from from Temperature / Humidity sensor

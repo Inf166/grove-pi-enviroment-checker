@@ -213,6 +213,7 @@ int ultrasonicRead(int port)
 		return -1;
 	return data;
 	*/
+
 	uint8_t incoming[32];
 	short output;
 	write_block(uRead_cmd, port, 0, 0);
@@ -371,15 +372,11 @@ void getSafeTemperatureAndHumidityData(float *temp, float *humidity, int port)
 	// if even after [MAX_RETRIES] attempts at getting good values
 	// nothing good came, then throw one of the bottom exceptions
 
-	if(isnan(*temp) || isnan(*humidity)){
-        printf("[GroveDHT NaN readings - check digital port]\n");
-	}
+	if(isnan(*temp) || isnan(*humidity))
+		printf("[GroveDHT NaN readings - check digital port]\n");
 
-
-	if(!areTemperatureAndHumidityGoodReadings(*temp, *humidity)){
-       printf("[GroveDHT bad readings - check digital port]\n");
-	}
-
+	if(!areTemperatureAndHumidityGoodReadings(*temp, *humidity))
+		printf("[GroveDHT bad readings - check digital port]\n");
 }
 
 /**
@@ -419,16 +416,13 @@ void getSafeTemperatureData(float *temp, int port){
 
 	// if even after [MAX_RETRIES] attempts at getting good values
 	// nothing good came, then throw one of the bottom exceptions
-	//printf("TEMPERATUR: %f", *temp);
 
-	if(isnan(*temp)){
+	if(isnan(*temp))
 		printf("[GroveDHT - Temperature NaN readings - check digital port]\n");
-	}
 
 	if(!areTemperatureGoodReadings(*temp))
-        printf("[GroveDHT - Temperature bad readings - check digital port]\n");
+		printf("[GroveDHT - Temperature bad readings - check digital port]\n");
 }
-
 void getSafeHumidityData(float *humidity, int port){
     int current_retry  = 0;
 	getUnsafeHumidityData(humidity, port); // read data from GrovePi once
@@ -445,15 +439,11 @@ void getSafeHumidityData(float *humidity, int port){
 	// if even after [MAX_RETRIES] attempts at getting good values
 	// nothing good came, then throw one of the bottom exceptions
 
-	if(isnan(*humidity)){
-       printf("[GroveDHT - Humidity NaN readings - check digital port]\n");
-	}
+	if(isnan(*humidity))
+		printf("[GroveDHT - Humidity NaN readings - check port]\n");
 
-
-	if(!areHumidityGoodReadings(*humidity)){
-        printf("[GroveDHT - Humidity bad readings - check digital port]\n");
-	}
-
+	if(!areHumidityGoodReadings(*humidity))
+		printf("[GroveDHT - Humidity bad readings - check port]\n");
 }
 
 void getUnsafeTemperatureData(float *temp, int port){
