@@ -152,7 +152,7 @@ int main(){
 // Raspberry-Fubktionen definieren - Übernommen von Team 59
 float getTemp(int port)
 {
-	float temp = 10; // Beispieldaten. Muss =0 wenn Raspberry aktiv
+	float temp; // Beispieldaten. Muss =0 wenn Raspberry aktiv
 //    pinMode(port, INPUT);  //Muss für Raspberry-Funktionen aktiv sein
 //    pi_sleep(1000);  //Muss für Raspberry-Funktionen aktiv sein
 //	getTemperature(&temp, port);  //Muss für Raspberry-Funktionen aktiv sein
@@ -161,7 +161,7 @@ float getTemp(int port)
 
 float getLuftfeuchtigkeit(int port)
 {
-	float humidity = 20; // Beispieldaten. Muss =0 wenn Raspberry aktiv
+	float humidity; // Beispieldaten. Muss =0 wenn Raspberry aktiv
 //    getHumidity(&humidity, port);  //Muss für Raspberry-Funktionen aktiv sein
 //	pi_sleep(1000); //wait 1s  //Muss für Raspberry-Funktionen aktiv sein
 	return humidity;
@@ -170,7 +170,7 @@ float getLuftfeuchtigkeit(int port)
 
 int getLicht(int port)
 {
-    int value=30; // Beispieldaten. Muss =0 wenn Raspberry aktiv
+    int value; // Beispieldaten. Muss =0 wenn Raspberry aktiv
 //    float resistance;  //Muss für Raspberry-Funktionen aktiv sein
 //    value = analogRead(port);  //Muss für Raspberry-Funktionen aktiv sein
 //    resistance = (float)(1023 - value) * 10 / value;  //Muss für Raspberry-Funktionen aktiv sein
@@ -180,7 +180,7 @@ int getLicht(int port)
 
 int getSound(int port)
 {
-	int sound = 40; // Beispieldaten. Muss =0 wenn Raspberry aktiv
+	int sound; // Beispieldaten. Muss =0 wenn Raspberry aktiv
 //	pinMode(port, INPUT);  //Muss für Raspberry-Funktionen aktiv sein
 //	pi_sleep(1000);  //Muss für Raspberry-Funktionen aktiv sein
 //	int i = 0;  //Muss für Raspberry-Funktionen aktiv sein
